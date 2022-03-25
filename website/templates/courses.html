@@ -1,0 +1,43 @@
+{% extends "base.html" %} {% block title %}Courses{% endblock %} {% block content
+    %}
+
+    <h1 align="center">Courses</h1>
+
+      {% for our_course in our_courses %}
+      <div class="table-responsive">
+        <table class="table table-striped table-bordered table-fixed table-hover table-condensed" style="border:0px; " id="myTable3">
+          <thead>
+            <tr>
+              <th width="">Course</th>
+              <th width="">Institute</th>
+              <th width="">Required subject</th>
+            </tr>
+          </thead>
+          <tbody class="tbody">
+            
+            
+            <td>
+              
+              
+              <a href="{{ url_for('views.course', id=our_course.id) }}" class="btn btn-primary">{{ our_course.courseName }}</a>
+            
+
+
+            </td>
+            
+            
+            
+            <td>
+              <a href="{{ url_for('views.institute', id=our_course.user_id) }}"class="btn btn-primary" >{{ our_course.institute }}</a>
+            </td>
+  
+            <td>{{ our_course.neededSubject }}</td>
+            </td>
+          </tbody>
+        </table>
+        
+    </div>
+    {% endfor %}
+
+  
+    {% endblock %}

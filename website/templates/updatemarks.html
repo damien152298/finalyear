@@ -1,0 +1,140 @@
+{% extends "base.html" %} {% block title %}Update marks{% endblock %} {% block content
+  %}
+
+  
+
+  <div class="container register">
+    <div class="row">
+        <div class="col-md-3 register-left">
+            <div >
+              <h3 class="register-heading">Update marks</h3>
+              <img style="margin-top:50px;" src="\static/images/update.png" class="img-fluid" alt="login image">
+            </div>
+        </div>
+        <div class="col-md-9 register-right" style="padding-bottom: 50px;">
+        <form method="POST">
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    
+                    <div class="row register-form">
+                    
+                      <div style="margin-right: 20px; margin-left: 20px;" class="form-group">
+                        <label for="maths">Maths</label>
+                        <select class="form-control" name="maths" id="maths">
+                          <option value="Fail">Fail: 44 marks or lower</option>
+                          <option value="Pass">Pass: 45 - 59 marks</option>
+                          <option value="Merit">Merit: 60 - 69 marks</option>
+                          <option value="Distinction">Distinction: More than 70 marks</option>
+                        </select>
+                      </div>
+                      <div style="margin-right: 20px; margin-left: 20px;" class="form-group">
+                        <label for="english">English</label>
+                        <select class="form-control" name="english" id="english">
+                          <option value="Fail">Fail: 44 marks or lower</option>
+                          <option value="Pass">Pass: 45 - 59 marks</option>
+                          <option value="Merit">Merit: 60 - 69 marks</option>
+                          <option value="Distinction">Distinction: More than 70 marks</option>
+                        </select>
+                      </div>
+                      <div style="margin-right: 20px; margin-left: 20px;" class="form-group">
+                        <label for="maths">Maltese</label>
+                        <select class="form-control" name="maltese" id="maltese">
+                          <option value="Fail">Fail: 44 marks or lower</option>
+                          <option value="Pass">Pass: 45 - 59 marks</option>
+                          <option value="Merit">Merit: 60 - 69 marks</option>
+                          <option value="Distinction">Distinction: More than 70 marks</option>
+                        </select>
+                      </div>
+                      <div style="margin-right: 20px; margin-left: 20px;" class="form-group">
+                        <label for="maths">Computer Studies</label>
+                        <select class="form-control" name="computer_studies" id="computer_studies">
+                          <option value="Fail">Fail: 44 marks or lower</option>
+                          <option value="Pass">Pass: 45 - 59 marks</option>
+                          <option value="Merit">Merit: 60 - 69 marks</option>
+                          <option value="Distinction">Distinction: More than 70 marks</option>
+                        </select>
+                      </div>
+                      <div style="margin-right: 20px; margin-left: 20px;" class="form-group">
+                        <label for="maths">Physics</label>
+                        <select class="form-control" name="physics" id="physics">
+                          <option value="Fail">Fail: 44 marks or lower</option>
+                          <option value="Pass">Pass: 45 - 59 marks</option>
+                          <option value="Merit">Merit: 60 - 69 marks</option>
+                          <option value="Distinction">Distinction: More than 70 marks</option>
+                        </select>
+                      </div>
+                      <div style="margin-right: 20px; margin-left: 20px;" class="form-group">
+                        <label for="maths">Biology</label>
+                        <select class="form-control" name="biology" id="biology">
+                          <option value="Fail">Fail: 44 marks or lower</option>
+                          <option value="Pass">Pass: 45 - 59 marks</option>
+                          <option value="Merit">Merit: 60 - 69 marks</option>
+                          <option value="Distinction">Distinction: More than 70 marks</option>
+                        </select>
+                      </div>
+                      <div style="margin-right: 20px; margin-left: 20px;" class="form-group">
+                        <label for="chemistry">Chemistry</label>
+                        <select class="form-control" name="chemistry" id="chemistry">
+                          <option value="Fail">Fail: 44 marks or lower</option>
+                          <option value="Pass">Pass: 45 - 59 marks</option>
+                          <option value="Merit">Merit: 60 - 69 marks</option>
+                          <option value="Distinction">Distinction: More than 70 marks</option>
+                        </select>
+                      </div>
+                      <div style="margin-right: 20px; margin-left: 20px;" class="form-group">
+                        <label for="italian">Italian</label>
+                        <select class="form-control" name="italian" id="italian">
+                          <option value="Fail">Fail: 44 marks or lower</option>
+                          <option value="Pass">Pass: 45 - 59 marks</option>
+                          <option value="Merit">Merit: 60 - 69 marks</option>
+                          <option value="Distinction">Distinction: More than 70 marks</option>
+                        </select>
+                      </div>
+                      <div style="margin-right: 20px; margin-left: 20px;" class="form-group">
+                        <label for="french">French</label>
+                        <select class="form-control" name="french" id="french">
+                          <option value="Fail">Fail: 44 marks or lower</option>
+                          <option value="Pass">Pass: 45 - 59 marks</option>
+                          <option value="Merit">Merit: 60 - 69 marks</option>
+                          <option value="Distinction">Distinction: More than 70 marks</option>
+                        </select>
+                      </div>
+                      <div style="margin-right: 20px; margin-left: 20px;" class="form-group">
+                        <label for="home_economics">Home Economics</label>
+                        <select class="form-control" name="home_economics" id="home_economics">
+                          <option value="Fail">Fail: 44 marks or lower</option>
+                          <option value="Pass">Pass: 45 - 59 marks</option>
+                          <option value="Merit">Merit: 60 - 69 marks</option>
+                          <option value="Distinction">Distinction: More than 70 marks</option>
+                        </select>
+                      </div>
+                      <div  style="margin-right: 20px; margin-left: 20px;"class="form-group">
+                        <label for="accounts">Accounts</label>
+                        <select class="form-control" name="accounts" id="accounts">
+                          <option value="Fail">Fail: 44 marks or lower</option>
+                          <option value="Pass">Pass: 45 - 59 marks</option>
+                          <option value="Merit">Merit: 60 - 69 marks</option>
+                          <option value="Distinction">Distinction: More than 70 marks</option>
+                        </select>
+                      </div>
+                      
+              
+                        </div>
+                    </div>
+                </div>
+                  
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Update</button>
+              </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    
+
+  
+  {% endblock %}

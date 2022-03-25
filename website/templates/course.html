@@ -1,0 +1,44 @@
+{% extends "base.html" %} {% block title %}{{ course.courseName }}{% endblock %} {% block content
+    %}
+
+
+              <div class="info">
+
+                <h3 class="infoname" style="margin-right: 20px;">{{ course.courseName }}</h3> 
+                <br><br><br>
+            
+            </div>
+            <img class="infopic" style="float: right; margin-top: 20px;" src="\static/images/{{course.courseimg }}" alt="courselogo" width="30%" height="50%">
+            
+            <div class="infobod">
+                <h3>About</h3>
+                <br>
+                <h6>{{ course.about }}</h6>
+                <br>
+            
+                
+            </div>
+            
+            <div class="table-responsive">
+            <br><br>
+            
+            <table class="table table-striped table-bordered table-fixed table-hover table-condensed" style="border:0px; width: 55.5%; display: inline-block; " id="myTable3">
+              <tr>
+                <th>Modules sample</th>
+              </tr>
+              <tr>
+                <td>{{ course.modules }}</td>
+                </tr>
+            </table>
+            
+            <table class="table table-striped table-bordered table-fixed table-hover table-condensed" style="border:0px; width: 30%; float: right;" id="myTable3">
+                <tr>
+                  <th>Careers</th>
+                </tr>
+                <tr>
+                  <td>{{ course.careers }}</td>
+                </tr>
+              </table>
+            </div>        
+  
+    {% endblock %}

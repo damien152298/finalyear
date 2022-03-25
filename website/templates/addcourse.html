@@ -1,0 +1,143 @@
+{% extends "base.html" %} {% block title %}Add new course{% endblock %} {% block content
+  %}
+
+  <style>
+
+    .divider:after,
+    .divider:before {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: #eee;
+    }
+    
+  img{
+       max-width:100px;
+}
+input[type=file]{
+              padding:10px;
+}
+
+        </style>
+    
+    <section style="float: middle; padding-bottom: 50px; opacity: 99%;" class="vh-100">
+      <div class="container py-5 h-100">
+        <div style="margin-top: 10px;" class="row d-flex align-items-center justify-content-center h-100">
+          <div class="col-md-8 col-lg-7 col-xl-6">
+            <img src="\static/images/course.png" class="img-fluid" alt="login image">
+          </div>
+          <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+            <form method="POST">
+
+
+              <h3 align="center">Add new course</h3>
+              <div class="form-group">
+        
+              </div>
+        
+              <div hidden class="form-group">
+                  <label for="institute">Select institute</label>
+                  <select class="form-control" name="institute" id="institute">
+                    <option>{{ current_user.first_name }}</option>
+                  </select>
+                </div>
+          
+        
+            <div class="form-group">
+              <label for="courseName">Course Name</label>
+              <input
+                type="courseName"
+                class="form-control"
+                id="courseName"
+                name="courseName"
+                placeholder="Enter course"
+              />
+            </div>
+        
+        
+            <div class="form-group">
+              <label for="neededSubject">Required subject</label>
+              <select class="form-control" name="neededSubject" id="neededSubject">
+                <option value="Maths">Maths</option>
+                <option value="English">English</option>
+                <option value="Maltese">Maltese</option>
+                <option value="Computer Studies">Computer Studies</option>
+                <option value="Physics">Physics</option>
+                <option value="Biology">Biology</option>
+                <option value="Chemistry">Chemistry</option>
+                <option value="Italian">Italian</option>
+                <option value="French">French</option>
+                <option value="Home Economics">Home Economics</option>
+                <option value="Accounts">Accounts</option>
+              </select>
+            </div>
+          
+        
+          <div class="form-group">
+            <label for="about">About</label>
+            <input
+              type="about"
+              class="form-control"
+              id="about"
+              name="about"
+              placeholder="Enter course description"
+            />
+          </div>
+        
+          <div class="form-group">
+            <label for="modules">Modules sample</label>
+            <input
+              type="modules"
+              class="form-control"
+              id="modules"
+              name="modules"
+              placeholder="Enter modules"
+            />
+         
+        
+          </div>
+        
+          <div class="form-group">
+            <label for="careers">Careers</label>
+            <input
+              type="careers"
+              class="form-control"
+              id="careers"
+              name="careers"
+              placeholder="Enter possible careers"
+            />
+          </div>
+        
+            <label>Select Image File:</label>
+            <input type="file" onchange="readURLcourse(this);"  id="courseimg" name="courseimg">
+            <img style="float: left;" id="blahcourse"/>
+        
+        
+        
+          <br />
+          <br>
+          <button style="float: right;" type="submit" class="btn btn-primary">Add Course</button>
+    
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+          
+      function readURLcourse(input) {
+             if (input.files && input.files[0]) {
+                 var reader = new FileReader();
+ 
+                 reader.onload = function (e) {
+                     $('#blahcourse')
+                         .attr('src', e.target.result);
+                 };
+ 
+                 reader.readAsDataURL(input.files[0]);
+             }
+         }
+      </script>
+ 
+  {% endblock %} 

@@ -1,0 +1,496 @@
+{% extends "base.html" %} {% block title %}My account{% endblock %} {% block content
+  %}
+
+
+
+  <link rel="stylesheet" href="https://allyoucan.cloud/cdn/icofont/1.0.1/icofont.css" integrity="sha384-jbCTJB16Q17718YM9U22iJkhuGbS0Gd2LjaWb4YJEZToOPmnKDjySVa323U+W7Fv" crossorigin="anonymous">
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="osahan-account-page-left shadow-sm bg-white h-100">
+                <div class="border-bottom p-4">
+                    <div class="osahan-user text-center">
+                        <div class="osahan-user-media">
+                            <div class="osahan-user-media-body">
+                                <h1>My account</h1>
+                                {% if current_user.usertype == 'Student Account' %}
+                                <img src="\static/images/students.png" style="width: 25%;">
+                                {% endif %}
+                                {% if current_user.usertype == 'University Account' %}
+                                <img src="\static/images/admin.png" style="width: 25%;">
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ul class="nav nav-tabs flex-column border-0 pt-4 pl-4 pb-4" id="myTab" role="tablist">
+                    <li class="nav-item">
+                      <h6 class="mb-2">{{ user.usertype }}</h6>
+                      <p class="mb-1">{{ user.first_name }}</p>
+                      <p>{{ user.email }}</p>
+                      {% if current_user.usertype == 'Student Account' %}
+          <a href="/updateuser/{{ user.id }}" class="btn btn-primary">Update account details</a>
+          <br>
+          <br>
+          <a href="/updatemarks/{{ user.id }}" class="btn btn-primary">Update Marks</a>
+          {% endif %}
+
+          {% if current_user.usertype == 'University Account' %}
+          <a href="/updateuni/{{ user.id }}" class="btn btn-primary">Update institute details</a>
+          <br>
+          <br>
+          
+          {% endif %}
+
+          
+
+          
+
+          
+
+    
+
+
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="osahan-account-page-right shadow-sm bg-white p-4 h-100">
+                <div class="tab-content" id="myTabContent">
+                  {% if current_user.usertype == 'University Account' %}
+                    <div class="tab-pane fade  active show" id="favourites" role="tabpanel" aria-labelledby="favourites-tab">
+                        <h1 class="font-weight-bold mt-0 mb-4">My courses</h1>
+                        <div class="row">
+                  {% endif %}
+                  {% if current_user.usertype == 'Student Account' %}
+                    <div class="tab-pane fade  active show" id="favourites" role="tabpanel" aria-labelledby="favourites-tab">
+                        <h1 class="font-weight-bold mt-0 mb-4">My marks</h1>
+                        <div class="row">
+                  {% endif %}
+                          {% if current_user.usertype == 'University Account' %}
+
+
+{% for courses in user.courses %}
+
+<table class="table table-striped table-bordered table-fixed table-hover table-condensed" style="border:0px; " id="myTable3">
+  <thead>
+    <tr>
+      <th width="">Course</th>
+      <th width="">Required subject</th>
+    </tr>
+  </thead>
+  <tbody class="tbody">
+      <td>{{ courses.courseName }}</td>
+      <td>{{ courses.neededSubject }}</td>
+      <a href="/update/{{ courses.id }}" class="btn btn-primary">Update</a>
+      <a href="/delete/{{ courses.id }}" class="btn btn-danger" style="margin-left: 10px;">Delete</a>
+  </tbody>
+  </table>
+  
+  {% endfor %}
+
+
+{% endif %}
+{% if current_user.usertype == 'Student Account' %}
+                            <div style="height: 80px;;" class="col-md-4 col-sm-6 mb-4 pb-2">
+                                <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                                    <div class="p-3 position-relative">
+                                        <div class="list-card-body">
+                                            <h6 class="mb-1">Maths
+                                             </a>
+                                          </h6>
+                              
+                                          <h6>{{ user.maths }}</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="height: 80px;" class="col-md-4 col-sm-6 mb-4 pb-2">
+                              <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                                  <div class="p-3 position-relative">
+                                      <div class="list-card-body">
+                                          <h6 class="mb-1">English
+                                           </a>
+                                        </h6>
+                                        <h6>{{ user.english }}</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="height: 80px;" class="col-md-4 col-sm-6 mb-4 pb-2">
+                              <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                                  <div class="p-3 position-relative">
+                                      <div class="list-card-body">
+                                          <h6 class="mb-1">Maltese
+                                           </a>
+                                        </h6>
+                                        <h6>{{ user.maltese }}</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="height: 80px;" class="col-md-4 col-sm-6 mb-4 pb-2">
+                              <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                                  <div class="p-3 position-relative">
+                                      <div class="list-card-body">
+                                          <h6 class="mb-1">Computer studies
+                                           </a>
+                                        </h6>
+
+                                        <h6>{{ user.computer_studies }}</h6>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div style="height: 80px;" class="col-md-4 col-sm-6 mb-4 pb-2">
+                            <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                                <div class="p-3 position-relative">
+                                    <div class="list-card-body">
+                                        <h6 class="mb-1">Biology
+                                         </a>
+                                      </h6>
+
+                                      <h6>{{ user.biology }}</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="height: 80px;" class="col-md-4 col-sm-6 mb-4 pb-2">
+                          <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                              <div class="p-3 position-relative">
+                                  <div class="list-card-body">
+                                      <h6 class="mb-1">Physics
+                                       </a>
+                                    </h6>
+                                    <h6>{{ user.physics }}</h6>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div style="height: 80px;" class="col-md-4 col-sm-6 mb-4 pb-2">
+                        <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                            <div class="p-3 position-relative">
+                                <div class="list-card-body">
+                                    <h6 class="mb-1">Chemistry
+                                     </a>
+                                  </h6>
+                                  <h6>{{ user.chemistry }}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="height: 80px;" class="col-md-4 col-sm-6 mb-4 pb-2">
+                      <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                          <div class="p-3 position-relative">
+                              <div class="list-card-body">
+                                  <h6 class="mb-1">Italian
+                                   </a>
+                                </h6>
+                                <h6>{{ user.italian }}</h6>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div style="height: 80px;" class="col-md-4 col-sm-6 mb-4 pb-2">
+                    <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                        <div class="p-3 position-relative">
+                            <div class="list-card-body">
+                                <h6 class="mb-1">French
+                                 </a>
+                              </h6>
+                              <h6>{{ user.french }}</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="height: 80px;" class="col-md-4 col-sm-6 mb-4 pb-2">
+                  <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                      <div class="p-3 position-relative">
+                          <div class="list-card-body">
+                              <h6 class="mb-1">Home economics
+                               </a>
+                            </h6>
+                            <h6>{{ user.home_economics }}</h6>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div style="height: 80px;" class="col-md-4 col-sm-6 mb-4 pb-2">
+                <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                    <div class="p-3 position-relative">
+                        <div class="list-card-body">
+                            <h6 class="mb-1">Accounts
+                             </a>
+                          </h6>
+
+                          <h6>{{ user.accounts }}</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+
+<!--
+  <h1 align="center">My Account</h1>
+  {% if current_user.usertype == 'Student Account' %}
+          <a href="/updateuser/{{ user.id }}" class="btn btn-primary">Update account</a>
+          {% endif %}
+
+          {% if current_user.usertype == 'University Account' %}
+          <a href="/updateuni/{{ user.id }}" class="btn btn-primary">Update account</a>
+          {% endif %}
+
+    
+  <div class="table-responsive">
+
+    <table class="table table-striped table-bordered table-fixed table-hover table-condensed" style="border:0px; " id="myTable3">
+      <thead>
+        <tr>
+          <th width="">Account type</th>
+          <th width="">E-mail</th>
+          <th width="">Name</th>
+
+        </tr>
+      </thead>
+      <tbody class="tbody">
+        <td>{{ user.usertype }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.first_name }}
+          
+
+
+        </td>
+      </tbody>
+    </table>
+</div>
+{% if current_user.usertype == 'Student Account' %}
+    <h1 align="center">Marks</h1>
+    <a href="/updatemarks/{{ user.id }}" class="btn btn-primary">Update Marks</a>
+    <div class="table-responsive">
+
+      <table class="table table-striped table-bordered table-fixed table-hover table-condensed" style="border:0px; " id="myTable3">
+
+        <thead>
+          <tr>
+            <th width="">Maths</th>
+            <th width="">English</th>
+            <th width="">Maltese</th>
+            <th width="">Computer Studies</th>
+            <th width="">Biology</th>
+            <th width="">Physics</th>
+            <th width="">Chemistry</th>
+            <th width="">Italian</th>
+            <th width="">French</th>
+            <th width="">Home Economics</th>
+            <th width="">Accounts</th>
+  
+          </tr>
+        </thead>
+        <tbody class="tbody">
+          <td>{{ user.maths }}</td>
+          <td>{{ user.english }}</td>
+          <td>{{ user.maltese }}</td>
+          <td>{{ user.computer_studies }}</td>
+          <td>{{ user.biology }}</td>
+          <td>{{ user.physics }}</td>
+          <td>{{ user.chemistry }}</td>
+          <td>{{ user.italian }}</td>
+          <td>{{ user.french }}</td>
+          <td>{{ user.home_economics }}</td>
+          <td>{{ user.accounts }}</td>
+        </tbody>
+      </table>
+  </div>
+
+-->
+
+  <br>
+  <h1 align="center">My course eligibility</h1>
+
+  {% for our_course in our_courses %}
+  <div class="table-responsive">
+
+    <table class="table table-striped table-bordered table-fixed table-hover table-condensed" style="border:0px; " id="myTable3">
+      <thead>
+        <tr>
+          <th width="">Course</th>
+          <th width="">Institute</th>
+          <th width="">Required subject</th>
+          <th width="">Eligibility</th>
+        </tr>
+      </thead>
+      <tbody class="tbody">
+        <td>
+          <a href="{{ url_for('views.course', id=our_course.id) }}" class="btn btn-primary">{{ our_course.courseName }}</a>
+        </td>
+        <td>
+          <a href="{{ url_for('views.institute', id=our_course.user_id) }}" class="btn btn-primary">{{ our_course.institute }}</a>
+        </td>
+        <td>{{ our_course.neededSubject }}</td>
+        <td>{% if ( (our_course.neededSubject == 'Computer Studies') and (user.computer_studies == 'Pass') ) %}
+          <h6><span>&#9989;
+            <br> you meet the minimum requirements for this course!</h6>
+
+            {% elif ( (our_course.neededSubject == 'Computer Studies') and (user.computer_studies == 'Merit') ) %}
+          <h6><span>&#9989;</span><br><span>&#9733;</span><span>&#9733;</span><span>&#9733;&#9734;&#9734;</span>
+            <br> your Merit will be a good stepping stone for this course. </h6>
+
+            {% elif ( (our_course.neededSubject == 'Computer Studies') and (user.computer_studies == 'Distinction') ) %}
+          <h6><span>&#9989;</span><br><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+             <br>your strong grasp of Computer Studies will help you do well in this course!</h6>
+
+
+
+          {% elif ( (our_course.neededSubject == 'Maths') and (user.maths == 'Pass') ) %}
+          <h6><span>&#9989;</span><br>Yes, you meet the minimum requirements for this course!</h6>
+
+          {% elif ( (our_course.neededSubject == 'Maths') and (user.maths == 'Merit') ) %}
+          <h6><span>&#9989;</span><br><span>&#9733;</span><span>&#9733;</span><span>&#9733;&#9734;&#9734;</span>
+            <br> your Merit will be a good stepping stone for this course. </h6>
+
+            {% elif ( (our_course.neededSubject == 'Maths') and (user.maths == 'Distinction') ) %}
+          <h6><span>&#9989;</span><br><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+             <br>your strong grasp of Maths will help you do well in this course!</h6>
+
+
+
+          {% elif ( (our_course.neededSubject == 'English') and (user.english == 'Pass') ) %}
+          <h6><span>&#9989;</span><br>Yes, you meet the minimum requirements for this course!</h6>
+
+          {% elif ( (our_course.neededSubject == 'English') and (user.english == 'Merit') ) %}
+          <h6><span>&#9989;</span><br><span>&#9733;</span><span>&#9733;</span><span>&#9733;&#9734;&#9734;</span>
+            <br> your Merit will be a good stepping stone for this course. </h6>
+
+            {% elif ( (our_course.neededSubject == 'English') and (user.english == 'Distinction') ) %}
+          <h6><span>&#9989;</span><br><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+             <br>your strong grasp of English will help you do well in this course!</h6>
+
+
+
+          {% elif ( (our_course.neededSubject == 'Biology') and (user.biology == 'Pass') ) %}
+          <h6><span>&#9989;</span><br>Yes, you meet the minimum requirements for this course!</h6>
+
+          {% elif ( (our_course.neededSubject == 'Biology') and (user.biology == 'Merit') ) %}
+          <h6><span>&#9989;</span><br><span>&#9733;</span><span>&#9733;</span><span>&#9733;&#9734;&#9734;</span>
+            <br> your Merit will be a good stepping stone for this course. </h6>
+
+            {% elif ( (our_course.neededSubject == 'Biology') and (user.biology == 'Distinction') ) %}
+          <h6><span>&#9989;</span><br><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+             <br>your strong grasp of Biology will help you do well in this course!</h6>
+
+
+
+          {% elif ( (our_course.neededSubject == 'Physics') and (user.physics == 'Pass') ) %}
+          <h6><span>&#9989;</span><br>Yes, you meet the minimum requirements for this course!</h6>
+
+          {% elif ( (our_course.neededSubject == 'Physics') and (user.physics == 'Merit') ) %}
+          <h6><span>&#9989;</span><br><span>&#9733;</span><span>&#9733;</span><span>&#9733;&#9734;&#9734;</span>
+            <br> your Merit will be a good stepping stone for this course. </h6>
+
+            {% elif ( (our_course.neededSubject == 'Physics') and (user.physics == 'Distinction') ) %}
+            <h6><span>&#9989;</span><br><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+               <br>your strong grasp of Physics will help you do well in this course!</h6>
+
+
+          {% elif ( (our_course.neededSubject == 'Maltese') and (user.maltese == 'Pass') ) %}
+          <h6><span>&#9989;</span><br>Yes, you meet the minimum requirements for this course!</h6>
+
+          {% elif ( (our_course.neededSubject == 'Maltese') and (user.maltese == 'Merit') ) %}
+          <h6><span>&#9989;</span><br><span>&#9733;</span><span>&#9733;</span><span>&#9733;&#9734;&#9734;</span>
+            <br> your Merit will be a good stepping stone for this course. </h6>
+
+          {% elif ( (our_course.neededSubject == 'Maltese') and (user.maltese == 'Distinction') ) %}
+          <h6><span>&#9989;</span><br><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+             <br>your strong grasp of the Maltese language will help you do well in this course!</h6>
+
+
+             {% elif ( (our_course.neededSubject == 'Accounts') and (user.accounts == 'Pass') ) %}
+             <h6><span>&#9989;</span><br>Yes, you meet the minimum requirements for this course!</h6>
+   
+             {% elif ( (our_course.neededSubject == 'Accounts') and (user.accounts == 'Merit') ) %}
+             <h6><span>&#9989;</span><br><span>&#9733;</span><span>&#9733;</span><span>&#9733;&#9734;&#9734;</span>
+               <br> your Merit will be a good stepping stone for this course. </h6>
+   
+             {% elif ( (our_course.neededSubject == 'Accounts') and (user.accounts == 'Distinction') ) %}
+             <h6><span>&#9989;</span><br><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+                <br>your strong grasp of Accounts will help you do well in this course!</h6>
+
+
+                {% elif ( (our_course.neededSubject == 'French') and (user.french == 'Pass') ) %}
+             <h6><span>&#9989;</span><br>Yes, you meet the minimum requirements for this course!</h6>
+   
+             {% elif ( (our_course.neededSubject == 'French') and (user.french == 'Merit') ) %}
+             <h6><span>&#9989;</span><br><span>&#9733;</span><span>&#9733;</span><span>&#9733;&#9734;&#9734;</span>
+               <br> your Merit will be a good stepping stone for this course. </h6>
+   
+             {% elif ( (our_course.neededSubject == 'French') and (user.french == 'Distinction') ) %}
+             <h6><span>&#9989;</span><br><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+                <br>your strong grasp of the French language will help you do well in this course!</h6>
+
+
+                {% elif ( (our_course.neededSubject == 'Italian') and (user.italian == 'Pass') ) %}
+             <h6><span>&#9989;</span><br>Yes, you meet the minimum requirements for this course!</h6>
+   
+             {% elif ( (our_course.neededSubject == 'Italian') and (user.italian == 'Merit') ) %}
+             <h6><span>&#9989;</span><br><span>&#9733;</span><span>&#9733;</span><span>&#9733;&#9734;&#9734;</span>
+               <br> your Merit will be a good stepping stone for this course. </h6>
+   
+             {% elif ( (our_course.neededSubject == 'Italian') and (user.italian == 'Distinction') ) %}
+             <h6><span>&#9989;</span><br><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+                <br>your strong grasp of the Italian language will help you do well in this course!</h6>
+
+
+                {% elif ( (our_course.neededSubject == 'Chemistry') and (user.chemistry == 'Pass') ) %}
+                <h6><span>&#9989;</span><br>Yes, you meet the minimum requirements for this course!</h6>
+      
+                {% elif ( (our_course.neededSubject == 'Chemistry') and (user.chemistry == 'Merit') ) %}
+                <h6><span>&#9989;</span><br><span>&#9733;</span><span>&#9733;</span><span>&#9733;&#9734;&#9734;</span>
+                  <br> your Merit will be a good stepping stone for this course. </h6>
+      
+                {% elif ( (our_course.neededSubject == 'Chemistry') and (user.chemistry == 'Distinction') ) %}
+                <h6><span>&#9989;</span><br><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+                   <br>your strong grasp of the Chemistry will help you do well in this course!</h6>
+
+                   {% elif ( (our_course.neededSubject == 'Home Economics') and (user.home_economics == 'Pass') ) %}
+                   <h6><span>&#9989;</span><br>Yes, you meet the minimum requirements for this course!</h6>
+         
+                   {% elif ( (our_course.neededSubject == 'Home Economics') and (user.home_economics == 'Merit') ) %}
+                   <h6><span>&#9989;</span><br><span>&#9733;</span><span>&#9733;</span><span>&#9733;&#9734;&#9734;</span>
+                     <br> your Merit will be a good stepping stone for this course. </h6>
+         
+                   {% elif ( (our_course.neededSubject == 'Home Economics') and (user.home_economics == 'Distinction') ) %}
+                   <h6><span>&#9989;</span><br><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+                      <br>your strong grasp of the Italian language will help you do well in this course!</h6>
+
+
+          {% else %}
+          <h6>&#10060; <br>No, the minimum requirements are not met.</h6>
+            {% endif %}
+        </td>
+      </tbody>
+    </table>
+</div>
+{% endfor %}
+
+    
+
+
+ 
+{% endif %}
+
+
+  {% endblock %}
+
+ 

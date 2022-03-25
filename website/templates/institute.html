@@ -1,0 +1,26 @@
+{% extends "base.html" %} {% block title %}{{ institute.first_name }}{% endblock %} {% block content
+    %}
+
+
+              <div class="info">
+                <img src="\static/images/{{institute.institutelogo }}" alt="institutelogo" width="10%" height="10%">
+                <h3 class="infoname" style="margin-right: 20px;">{{ institute.first_name }}</h3> 
+                <br><br><br>
+            
+            </div>
+            <img class="infopic" style="float: right; margin-top: 20px;" src="\static/images/{{institute.instituteimg }}" alt="institutelogo" width="30%" height="50%">
+            
+            <div class="infobod">
+                <h3>About</h3>
+                <br>
+                <h6>{{ institute.aboutuni }}</h6>
+                <br>
+            
+                
+            </div>
+            
+            <div class="table-responsive">
+            <br><br>
+               
+  
+    {% endblock %}
